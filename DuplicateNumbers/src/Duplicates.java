@@ -9,14 +9,14 @@ import java.util.*;
 // dupe = 43
 
 public class Duplicates {
-    public static Collection<Integer> findDuplicates(Collection<Integer> numbers) {
+    public static Collection<Integer> findDuplicates(Collection<Integer> numbers) { // full complexity O(n^2)
 
         List<Integer> duplicates = new LinkedList<Integer>();
         // Set<Integer> duplicates = new HashSet<Integer>(); // if we need same order as in example
         Set<Integer> processedValues = new HashSet<Integer>();
 
-        for (Integer value : numbers) {
-            if (processedValues.contains(value) && !duplicates.contains(value)) {
+        for (Integer value : numbers) { // complexity O(n^2)
+            if (processedValues.contains(value) && !duplicates.contains(value)) { // complexity O(n)
                 duplicates.add(value);
             } else {
                 processedValues.add(value);

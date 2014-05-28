@@ -63,3 +63,38 @@ public class EmailSender {
         print(emailBatches2);
     }
 }
+
+/*
+        [test_01@gmail.com]Hello, Test 01!
+        [test_02@gmail.com]Hello, Test 02!
+        [test_03@gmail.com]Hello, Test 03!
+        [test_04@gmail.com]Hello, Test 04!
+        [test_01@gmail.com]Hello, Test 01. It is my second email.
+        [test_02@gmail.com]Hello, Test 02. It is my second email.
+        [test_03@gmail.com]Hello, Test 02. It is my second email.
+        [test_01@gmail.com]Hello, Test 01. Don't forget to reply me!
+        Email batch #1
+        [test_01@gmail.com]Hello, Test 01!
+        [test_02@gmail.com]Hello, Test 02!
+        [test_03@gmail.com]Hello, Test 03!
+        [test_04@gmail.com]Hello, Test 04!
+        Email batch #2
+        [test_01@gmail.com]Hello, Test 01. It is my second email.
+        [test_02@gmail.com]Hello, Test 02. It is my second email.
+        [test_03@gmail.com]Hello, Test 02. It is my second email.
+        Email batch #3
+        [test_01@gmail.com]Hello, Test 01. Don't forget to reply me!
+        Second algorithm
+        Email batch #1
+        [test_03@gmail.com]Hello, Test 03!
+        [test_04@gmail.com]Hello, Test 04!
+        [test_02@gmail.com]Hello, Test 02!
+        [test_01@gmail.com]Hello, Test 01!
+        Email batch #2
+        [test_03@gmail.com]Hello, Test 02. It is my second email.
+        [test_02@gmail.com]Hello, Test 02. It is my second email.
+        [test_01@gmail.com]Hello, Test 01. It is my second email.
+        Email batch #3
+        [test_01@gmail.com]Hello, Test 01. Don't forget to reply me!
+
+*/

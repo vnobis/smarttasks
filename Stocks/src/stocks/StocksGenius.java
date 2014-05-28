@@ -70,13 +70,12 @@ public class StocksGenius {
 
     public static Collection<Action> getBestActions1(List<StockPrice> stockPrices) {
 
-        Collection<BuySellPeriod> periods = getPeriods(stockPrices);
+        Collection<BuySellPeriod> periods = getPeriods(stockPrices); // complexity O(N^2)
         Collection<Action> actions = new LinkedList<Action>();
-        for (BuySellPeriod period : periods) {
+        for (BuySellPeriod period : periods) { // complexity O(N)
             actions.addAll(period.generateActionsForPeriod(stockPrices));
         }
         return actions;
-        //return getStub(stockPrices.size());
     }
 
 
@@ -85,7 +84,7 @@ public class StocksGenius {
         StockPrice maxStockPriceForPeriod;
         do {
             // First we are looking for max stock price for all available days.
-            maxStockPriceForPeriod = getDayWithMaxStockPrice(stockPricesForPeriod);
+            maxStockPriceForPeriod = getDayWithMaxStockPrice(stockPricesForPeriod); // complexity O(N)
             assert maxStockPriceForPeriod != null;
             // We may gain income if we will buy stocks from first day of period till day with max stock prices
             periods.add(new BuySellPeriod(
@@ -93,29 +92,29 @@ public class StocksGenius {
                     maxStockPriceForPeriod.getDayNumber(),
                     maxStockPriceForPeriod.getPrice()));
 
-            stockPricesForPeriod = getNewPeriodStockPrices(stockPricesForPeriod, maxStockPriceForPeriod);
+            stockPricesForPeriod = getNewPeriodStockPrices(stockPricesForPeriod, maxStockPriceForPeriod); // complexity O(N)
         }
-        while (stockPricesForPeriod.size() != 0);
+        while (stockPricesForPeriod.size() != 0); // complexity O(N^2)
 
 
         return periods;
     }
 
-    private static List<StockPrice> getNewPeriodStockPrices(List<StockPrice> stockPricesForPeriod, StockPrice maxStockPriceForPeriod) {
+    private static List<StockPrice> getNewPeriodStockPrices(List<StockPrice> stockPricesForPeriod, StockPrice maxStockPriceForPeriod) { // complexity O(N)
         // Cut data for [day 1, day with max price]
         List<StockPrice> stockPricesForNewPeriod = new LinkedList<StockPrice>(stockPricesForPeriod
-                .subList(stockPricesForPeriod.indexOf(maxStockPriceForPeriod), stockPricesForPeriod.size()));
+                .subList(stockPricesForPeriod.indexOf(maxStockPriceForPeriod), stockPricesForPeriod.size())); // complexity O(N)
 
         //If new period starts with days with same price as maxStockPriceForPeriod.price, we can remove them
         while (stockPricesForNewPeriod.size() != 0
-                && stockPricesForNewPeriod.get(0).getPrice() == maxStockPriceForPeriod.getPrice()) {
+                && stockPricesForNewPeriod.get(0).getPrice() == maxStockPriceForPeriod.getPrice()) { // complexity O(N)
             stockPricesForNewPeriod.remove(0);
         }
 
         return stockPricesForNewPeriod;
     }
 
-    private static StockPrice getDayWithMaxStockPrice(Collection<StockPrice> stockPrices) {
+    private static StockPrice getDayWithMaxStockPrice(Collection<StockPrice> stockPrices) { // complexity O(N)
         assert stockPrices.size() != 0;
         StockPrice maxStockPrice = stockPrices.iterator().next(); // get first element
 
